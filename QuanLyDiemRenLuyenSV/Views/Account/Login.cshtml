@@ -1,0 +1,62 @@
+﻿@using QuanLyDiemRenLuyenSV.Models
+@model dynamic
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "_Layout"; // Sử dụng layout chung
+}
+
+<div class="container main-content d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 120px);">
+    <div class="card card-nctu" style="width: 100%; max-width: 450px;">
+        <div class="card-header text-center">
+            <h3>Đăng nhập hệ thống</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Tên đăng nhập (Mã SV/NV)</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="vaiTroID" class="form-label">Chọn vai trò</label>
+                    <select class="form-select" id="vaiTroID" name="vaiTroID" required>
+                        <option value="">-- Chọn vai trò --</option>
+                        @{
+                            // Lấy danh sách Vai trò từ DbContext và hiển thị
+                            // Bạn cần inject ApplicationDbContext vào View hoặc truyền qua ViewBag/ViewModel
+                            // Để đơn giản cho việc copy, tôi sẽ giả định bạn có thể lấy dữ liệu này.
+                            // Trong thực tế, bạn nên truyền nó từ Controller qua ViewModel.
+                            var dbContext = Context.RequestServices.GetService(typeof(QuanLyDiemRenLuyenSV.Data.ApplicationDbContext)) as QuanLyDiemRenLuyenSV.Data.ApplicationDbContext;
+                            if (dbContext != null)
+                            {
+                                var vaiTros = dbContext.CauHinhVaiTros.ToList();
+                                foreach (var vaiTro in vaiTros)
+                                {
+                                    <option value="@vaiTro.VaiTroID">@vaiTro.TenVaiTro</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-nctu-primary">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <p>Quên mật khẩu? <a href="#" class="text-nctu-primary">Liên hệ Admin</a></p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

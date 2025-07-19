@@ -1,0 +1,126 @@
+﻿/* wwwroot/css/site.css */
+
+:root {
+    --nctu-primary: #920309; /* Đỏ đô */
+    --nctu-secondary: #ffd24b; /* Vàng cam */
+    --nctu-background: #ffffff; /* Nền trắng */
+    --nctu-text-color: #333333;
+    --nctu-link-color: #920309;
+    --nctu-link-hover-color: #ffc107; /* Một tông vàng sáng hơn khi hover */
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--nctu-background);
+    color: var(--nctu-text-color);
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Font chữ cơ bản */
+}
+
+/* Header */
+.nctu-header {
+    background-color: var(--nctu-primary);
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .nctu-header .navbar-brand {
+        color: var(--nctu-secondary) !important;
+        font-weight: bold;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .nctu-header .navbar-brand img {
+            height: 50px; /* Kích thước logo */
+            margin-right: 10px;
+        }
+
+    .nctu-header .navbar-nav .nav-link {
+        color: var(--nctu-secondary) !important;
+        font-weight: 500;
+        margin-left: 15px;
+        transition: color 0.3s ease;
+    }
+
+        .nctu-header .navbar-nav .nav-link:hover,
+        .nctu-header .navbar-nav .nav-link.active {
+            color: var(--nctu-secondary) !important; /* Giữ màu vàng khi hover/active */
+            text-decoration: underline;
+        }
+
+/* Buttons */
+.btn-nctu-primary {
+    background-color: var(--nctu-primary);
+    color: var(--nctu-secondary);
+    border-color: var(--nctu-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+    .btn-nctu-primary:hover {
+        background-color: var(--nctu-secondary);
+        color: var(--nctu-primary);
+        border-color: var(--nctu-secondary);
+    }
+
+.btn-nctu-secondary {
+    background-color: var(--nctu-secondary);
+    color: var(--nctu-primary);
+    border-color: var(--nctu-secondary);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+    .btn-nctu-secondary:hover {
+        background-color: var(--nctu-primary);
+        color: var(--nctu-secondary);
+        border-color: var(--nctu-primary);
+    }
+
+/* Footer */
+.nctu-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: var(--nctu-primary);
+    color: var(--nctu-secondary);
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content padding */
+.container.main-content {
+    padding-top: 20px;
+    padding-bottom: 80px; /* Đủ khoảng trống cho footer */
+}
+
+/* Form styling */
+.form-control:focus {
+    border-color: var(--nctu-secondary);
+    box-shadow: 0 0 0 0.25rem rgba(255, 210, 75, 0.25); /* Màu vàng cam nhạt */
+}
+
+/* Card styling */
+.card-nctu {
+    border-color: var(--nctu-primary);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+    .card-nctu .card-header {
+        background-color: var(--nctu-primary);
+        color: var(--nctu-secondary);
+        font-weight: bold;
+    }
